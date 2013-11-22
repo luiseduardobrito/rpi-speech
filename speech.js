@@ -10,13 +10,32 @@ var SpeechHandler = function() {
 	}
 
 	_public.listen = function(fn) {
+
 		_this.record(function(err, res){
 
 			if(err)
 				console.log(err);
-			else
-				fn(res);
 
+			else {
+
+				if(!res || !res.length) {
+
+					fn(false);
+				}
+
+				else {
+
+					res = res.split('\n').length ? res.split('\n')[0] : res; 
+
+					if(!res || !res.length) {
+
+						fn(false)
+						return;
+					}
+
+					fn(res);
+				}
+			}
 		})
 	}
 

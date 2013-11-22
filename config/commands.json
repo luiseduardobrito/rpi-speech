@@ -1,0 +1,19 @@
+{
+	"browser": {
+		"commands": ["navegar", "navegador", "acessar", "abrir"]
+	},
+
+	"google": {
+		"commands": [
+			"google", 
+			"google.com", 
+			"busca", "buscar", 
+			"procura", "procurar",
+			"pesquisa", "pesquisar"
+		]
+	},
+
+	"youtube": {
+		"commands": ["youtube", "youtube.com"]
+	}
+}

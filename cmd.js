@@ -1,4 +1,4 @@
-var map = require("./config/map");
+var map = require("./config/commands");
 
 var CommandHandler = function() {
 
@@ -13,13 +13,21 @@ var CommandHandler = function() {
 
 		fn = fn || function(){};
 
+		if(cmd.split(" ").length > 1) {
+
+			var arr = cmd.split(" ");
+
+			cmd = arr.shift();
+			params = arr;
+		}
+
 		for(var k in map) {
 
 			var list = map[k].commands;
 
 			for(var i = 0; i < list.length; i++) {
 
-				if(_this.compare(cmd, params, list[i])) {
+				if(_this.compare(cmd, list[i])) {
 					_this.start(k, params, fn);
 					return;
 				}
@@ -27,15 +35,21 @@ var CommandHandler = function() {
 		}
 	}
 
-	_this.start = function(input, params, fn) {
+	_this.start = function(cmd, params, fn) {
 
-		var cmd = require("./commands/" + input);
-		cmd = cmd.init(params, fn);
+		if(cmd.split(" ").length > 1) {
+
+			var arr = cmd.split(" ");
+
+			cmd = arr.shift();
+			params = arr;
+		}
+
+		var cmd = require("./plugins/" + cmd);
+		cmd(params, fn);
 	}
 
 	_this.compare = function(input, mask) {
-
-		// TODO: regex mask
 
 		if(input == mask) {
 			return true;
