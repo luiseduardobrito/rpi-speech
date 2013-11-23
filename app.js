@@ -6,6 +6,8 @@ var exec 	= require('child_process').exec;
 var speech 	= require("./speech");
 var cmd 	= require("./cmd")
 
+var config 	= require("../config/general");
+
 program
 	.version('0.0.1')
 	.option('-v, --verbose', 'Verbose mode')
@@ -54,7 +56,7 @@ var ApplicationHandler = function() {
 						_this.recognize();
 					});
 
-			}, 500)
+			}, config.button.timeout)
 		}
 	}
 

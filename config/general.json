@@ -1,3 +1,7 @@
 {
-	"state": "development"
+	"state": "development",
+
+	"button": {
+		"timeout": 0.25
+	}
 }
