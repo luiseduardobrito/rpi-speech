@@ -66,16 +66,19 @@ var ApplicationHandler = function() {
 
 		fn = fn || function(){};
 
+		_this.state = true;
+
 		exec('./scripts/button.sh', function(err, stdout, stderr) {
 			
 			var res = stdout || "01";
 			res = res.split('\n').length ? res.split('\n')[0] : res;
 
 			if(res == "00" && !_this.state) {
-
-				_this.state = true;
 				fn();
 			}
+
+			else 
+				_this.state = false;
 		});
 	}
 
