@@ -2,7 +2,7 @@ var util = require("util");
 var exec = require("child_process").exec;
 
 var config = require("../../config/general");
-var DEFAULT_BROWSER = config.browser;
+var DEFAULT_BROWSER = util.format(config.browser, "http://google.com/search?q=%s");
 
 module.exports = function(params, fn) {
 
