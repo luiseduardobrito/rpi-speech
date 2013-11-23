@@ -87,21 +87,20 @@ var ApplicationHandler = function() {
 
 				setTimeout(function(){
 					speech.display("Pronto");
+					_this.state = false;
 				}, 2000)
 
-				_this.state = false;
 			}
 
 			else {
 				
 				cmd.run(txt, {}, function(r) {
-					
-					_this.state = false;
 
 					if(program.verbose)
 						console.log("Response: " + r)
 
 					speech.display("Pronto");
+					_this.state = false;
 				})
 			}
 		});
