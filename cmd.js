@@ -40,6 +40,9 @@ var CommandHandler = function() {
 		}
 
 		speech.display("Comando desconhecido");
+		setTimeout(function(){
+			speech.display("Pronto");
+		}, 2000)
 	}
 
 	_this.start = function(cmd, params, fn) {

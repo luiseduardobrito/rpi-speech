@@ -2,6 +2,6 @@
 	"state": "development",
 
 	"button": {
-		"timeout": 0.25
+		"timeout": 0.5
 	}
 }
