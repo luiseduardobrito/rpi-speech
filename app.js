@@ -6,7 +6,7 @@ var exec 	= require('child_process').exec;
 var speech 	= require("./speech");
 var cmd 	= require("./cmd")
 
-var config 	= require("../config/general");
+var config 	= require("./config/general");
 
 program
 	.version('0.0.1')
