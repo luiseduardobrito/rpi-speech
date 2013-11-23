@@ -61,7 +61,7 @@ var SpeechHandler = function() {
 		if(msg.split("\n").length > 1) {
 
 			var firstLine = msg.split("\n")[0];
-			var secondLine = msg.split("\n")[0];
+			var secondLine = msg.split("\n")[1];
 
 			exec('./scripts/display.sh "'+ firstLine +'"', function(err, stdout, stderr) {
 				
