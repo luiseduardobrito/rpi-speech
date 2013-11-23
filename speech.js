@@ -63,9 +63,9 @@ var SpeechHandler = function() {
 			var firstLine = msg.split("\n")[0];
 			var secondLine = msg.split("\n")[0];
 
-			exec('./scripts/advanced/second_line.sh "'+ secondLine +'"', function(err, stdout, stderr) {
+			exec('./scripts/display.sh "'+ firstLine +'"', function(err, stdout, stderr) {
 				
-				exec('./scripts/advanced/first_line.sh "'+ firstLine +'"', function(err, stdout, stderr) {
+				exec('./scripts/advanced/second_line.sh "'+ secondLine +'"', function(err, stdout, stderr) {
 					fn();
 				});
 			});
