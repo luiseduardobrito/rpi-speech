@@ -52,7 +52,9 @@ var CommandHandler = function() {
 			params = arr;
 		}
 
-		speech.display("Iniciando " + cmd + "...");
+		speech.display(cmd.replace(/\w\S*/g, function(txt){
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		}) + "\n Iniciando...");
 
 		var cmd = require("./plugins/" + cmd);
 		cmd(params, fn);

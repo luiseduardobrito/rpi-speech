@@ -38,6 +38,8 @@ var ApplicationHandler = function() {
 	 		_this.unit = true;
 	 	}
 
+	 	speech.display("Pronto")
+
 	 	return _public;
 	}
 
