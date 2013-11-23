@@ -69,14 +69,15 @@ var ApplicationHandler = function() {
 			var res = stdout || "01";
 			res = res.split('\n').length ? res.split('\n')[0] : res;
 
-			if(res == "00")
+			if(res == "00" && !_this.state) {
+
+				_this.state = true;
 				fn();
+			}
 		});
 	}
 
 	_this.recognize = function() {
-
-		_this.state = true;
 
 	 	speech.listen(function(txt) {
 
