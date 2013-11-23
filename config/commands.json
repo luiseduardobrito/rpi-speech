@@ -15,5 +15,9 @@
 
 	"youtube": {
 		"commands": ["youtube", "youtube.com"]
+	},
+
+	"netflix": {
+		"commands": ["netflix", "netflix.com"]
 	}
 }
