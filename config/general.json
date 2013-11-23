@@ -1,7 +1,7 @@
 {
 	"state": "development",
 
-	"browser": "iceweasel %s",
+	"browser": "chromium-browser --user-data-dir=/tmp/ --kiosk %s",
 
 	"button": {
 		"timeout": 0.5
