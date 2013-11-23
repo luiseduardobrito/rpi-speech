@@ -1,3 +1,5 @@
 #!/bin/bash
 
-git pull origin master
+git checkout .
+git pull --force origin master
+sudo node app -v
