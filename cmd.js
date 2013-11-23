@@ -52,9 +52,16 @@ var CommandHandler = function() {
 			params = arr;
 		}
 
-		speech.display(cmd.replace(/\w\S*/g, function(txt){
+		var displayCommand = cmd.replace(/\w\S*/g, function(txt){
 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-		}) + "\n Iniciando...");
+		});
+
+		var displayParams = (params.join ? params.join(" ") : (params.length ? params : "Iniciando..."));
+		displayParams = displayParams.replace(/\w\S*/g, function(txt){
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+
+		speech.display(displayCommand + "\n" + displayParams);
 
 		var cmd = require("./plugins/" + cmd);
 		cmd(params, fn);

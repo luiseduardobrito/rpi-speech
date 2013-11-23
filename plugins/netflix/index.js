@@ -5,15 +5,11 @@ var DEFAULT_BROWSER = "chromium-browser  --user-data-dir=/tmp/ --kiosk 'http://m
 
 module.exports = function(params, fn) {
 
-	if(!params.length) {
-		throw new Error("Unknown or invalid browser params");
-	}
-
-	else if(typeof params === typeof "") {
+	if(typeof params === typeof "") {
 		params = [params];
 	}
 
-	var paramStr = params.join(" ");
+	var paramStr = params.join ? params.join(" ") : (params.length ? params : "");
 	var browserCommand = util.format(DEFAULT_BROWSER, encodeURI(paramStr));
 
 	exec(browserCommand, function(err, stdout, stderr) {

@@ -57,10 +57,28 @@ var SpeechHandler = function() {
 		if(_this.verbose)
 			console.log(msg);
 
-		// log to rpi display
-		exec('./scripts/display.sh "'+ msg +'"', function(err, stdout, stderr) {
-			fn();
-		});
+
+		if(msg.split("\n").length > 1) {
+
+			var firstLine = msg.split("\n")[0];
+			var secondLine = msg.split("\n")[0];
+
+			exec('./scripts/advanced/second_line.sh "'+ secondLine +'"', function(err, stdout, stderr) {
+				
+				exec('./scripts/advanced/first_line.sh "'+ firstLine +'"', function(err, stdout, stderr) {
+					fn();
+				});
+			});
+		}
+
+		else {
+
+
+			// log to rpi display
+			exec('./scripts/display.sh "'+ msg +'"', function(err, stdout, stderr) {
+				fn();
+			});
+		}
 
 	}; _public.display = _this.display;
 
