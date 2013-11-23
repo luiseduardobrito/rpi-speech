@@ -1,6 +1,8 @@
 {
 	"state": "development",
 
+	"browser": "iceweasel %"
+
 	"button": {
 		"timeout": 0.5
 	}

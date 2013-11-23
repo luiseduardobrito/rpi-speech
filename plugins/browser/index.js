@@ -1,7 +1,8 @@
 var util = require("util");
 var exec = require("child_process").exec;
 
-var DEFAULT_BROWSER = "chromium-browser  --user-data-dir=/tmp/ --kiosk %s";
+var config = require("../../config/general");
+var DEFAULT_BROWSER = config.browser;
 
 module.exports = function(params, fn) {
 
