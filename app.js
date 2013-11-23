@@ -81,15 +81,15 @@ var ApplicationHandler = function() {
 
 	 	speech.listen(function(txt) {
 
-	 		_this.state = false;
-
 			if(!txt) {
 				speech.display("Comando desconhecido");
+				_this.state = false;
 			}
 
 			else {
 				
 				cmd.run(txt, {}, function(r) {
+					_this.state = false;
 					console.log("Response: " + r)
 				})
 			}
