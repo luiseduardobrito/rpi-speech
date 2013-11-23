@@ -1,6 +1,11 @@
 var map = require("./config/commands");
+var speech = require('./speech');
 
 var CommandHandler = function() {
+
+	if ( arguments.callee._singletonInstance )
+		return arguments.callee._singletonInstance;
+	arguments.callee._singletonInstance = this;
 
 	var _this = this;
 	var _public = _this.exports = {};
@@ -33,6 +38,8 @@ var CommandHandler = function() {
 				}
 			}
 		}
+
+		speech.display("Comando desconhecido");
 	}
 
 	_this.start = function(cmd, params, fn) {
@@ -44,6 +51,8 @@ var CommandHandler = function() {
 			cmd = arr.shift();
 			params = arr;
 		}
+
+		speech.display("Iniciando " + cmd + "...");
 
 		var cmd = require("./plugins/" + cmd);
 		cmd(params, fn);

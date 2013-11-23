@@ -2,19 +2,29 @@ var exec = require('child_process').exec;
 
 var SpeechHandler = function() {
 
+	if ( arguments.callee._singletonInstance )
+		return arguments.callee._singletonInstance;
+	arguments.callee._singletonInstance = this;
+
 	var _this = this;
 	var _public = _this.exports = {};
 
+	_this.verbose = false;
+
 	_this.init = function() {
 		return _public;
+	}
+	
+	_public.setVerbose = function(v) {
+		_this.verbose = v;
 	}
 
 	_public.listen = function(fn) {
 
 		_this.record(function(err, res){
 
-			if(err)
-				console.log(err);
+			if(err) 
+				console.error(err);
 
 			else {
 
@@ -44,7 +54,8 @@ var SpeechHandler = function() {
 		fn = fn || function(){};
 
 		// log to terminal screen
-		console.log(msg);
+		if(_this.verbose)
+			console.log(msg);
 
 		// log to rpi display
 		exec('./scripts/display.sh "'+ msg +'"', function(err, stdout, stderr) {
